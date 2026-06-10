@@ -1,0 +1,53 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+src/**/.env
+
+# Python environments and caches
+.python-version.local
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Build and runtime output
+artifacts/
+build/
+dist/
+checkpoints/
+*.log
+*.zip
+.annotations-backup/
+.tmp/
+
+# The public repository carries only the synthetic release and reviewed
+# human-evaluation data. Downloaded sources and reproducible outputs stay local.
+data/*
+!data/generated/
+data/generated/*
+!data/generated/tcred_release/
+data/generated/tcred_release/*
+!data/generated/tcred_release/tcred_synth/
+!data/generated/tcred_release/tcred_synth/**
+!data/human_eval/
+data/human_eval/*
+!data/human_eval/tcred_release/
+data/human_eval/tcred_release/*
+!data/human_eval/tcred_release/human_eval_key.jsonl
+!data/human_eval/tcred_release/raw/
+!data/human_eval/tcred_release/raw/**
+!data/human_eval/tcred_release/gold/
+!data/human_eval/tcred_release/gold/**
+data/human_eval/tcred_release/gold/*/system_performance/
