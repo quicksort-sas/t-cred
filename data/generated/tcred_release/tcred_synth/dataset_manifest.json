@@ -1,0 +1,32 @@
+{
+  "private_artifacts": {
+    "answer_variants.jsonl": "6e7db91a5ab775764cee5c8c972f481cae7fecb7018bffbb019d876cd39ef5e2",
+    "context_packs.jsonl": "5cde5e6f3017008449c63684c21b4d596ace57bef96c1af557a25a0599aabb98",
+    "entities.jsonl": "d3757b3321a96a7cfb363237c80116e15fa539912215a99b32cd3bbd8edc99bb",
+    "facts.jsonl": "dd0c531b57defbdce03330079db3b9f329aa9e514745b02fe2019827b63af53c",
+    "graph_paths.jsonl": "0796f39523d204cbd6b25ba94ac590fc41d0f230c599cdbd2b3a3a126346c134",
+    "questions.jsonl": "7f9776966c4ea3acf3d755a294e928252ed58abe0022778ec6b3b8d0727b8cfd",
+    "scenarios.jsonl": "fc26d0f3f9172c38d8d85e9356b590ead77738c811210633b387dace9939587e",
+    "snapshots.jsonl": "994807643e229153465581cbf73b37bccd5ad63e8761e257037878a806517ef2",
+    "splits.json": "889cb7a0993527e6142b32c1638d63e052c35e6cb673bd4198446c3d8802aab9"
+  },
+  "private_payload_sha256": "dc766f520bbe9cbf84dbec1f6bd0f1540c41dffb555ba93a854b122f5fffdd55",
+  "record_counts": {
+    "answer_variants": 10029,
+    "context_packs": 12484,
+    "entities": 5367,
+    "facts": 4110,
+    "graph_paths": 3136,
+    "questions": 2400,
+    "scenarios": 600,
+    "snapshots": 1200
+  },
+  "runtime_artifacts": {
+    "runtime/entities.jsonl": "135cd6a9d94137d3d5ee6771da638ed59f8de1d7555fb483a0deedf1e413777d",
+    "runtime/facts.jsonl": "008effd69ac847e6c458003b8bbf2444f919696b96de893cc0d0fbdf6511a0c3",
+    "runtime/questions.jsonl": "42568d0bb318af789156265b772272a711ca15e7c5c0dec6a59e53325186192f"
+  },
+  "runtime_boundary": "The runtime projection excludes gold answers, question programs except the requested snapshot, fact roles, gold paths, context packs, and answer variants.",
+  "runtime_payload_sha256": "5ef4a8de54415c020a32b394b8226d8267018754ab486500ea92504d3b438b6a",
+  "schema_version": "3.0"
+}

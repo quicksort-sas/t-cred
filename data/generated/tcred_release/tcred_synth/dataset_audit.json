@@ -1,0 +1,77 @@
+{
+  "scenario_count": 600,
+  "question_count": 2400,
+  "fact_count": 4110,
+  "answer_variant_count": 10029,
+  "graph_path_count": 3136,
+  "context_pack_count": 12484,
+  "domain_counts": {
+    "political_affiliations": 72,
+    "employment_history": 72,
+    "executive_leadership": 23,
+    "sports_coaching": 72,
+    "heads_of_state": 4,
+    "positions_held": 72,
+    "organization_memberships": 72,
+    "organizational_leadership": 71,
+    "sports_memberships": 71,
+    "government_leadership": 71
+  },
+  "temporal_operator_counts": {
+    "as_of": 600,
+    "current": 179,
+    "effective": 223,
+    "first": 196,
+    "latest": 108,
+    "last": 151,
+    "before": 186,
+    "expired": 131,
+    "after": 107,
+    "between": 140,
+    "during": 210,
+    "next": 77,
+    "previous": 92
+  },
+  "system_difficulty_counts": {
+    "easy": 971,
+    "medium": 1167,
+    "hard": 262
+  },
+  "eval_difficulty_counts": {
+    "easy": 1525,
+    "medium": 727,
+    "hard": 148
+  },
+  "answer_variant_counts": {
+    "correct_refusal": 150,
+    "overconfident_should_refuse": 150,
+    "unsupported_hallucinated_answer": 150,
+    "correct_supported": 2250,
+    "correct_answer_invalid_evidence": 391,
+    "inappropriate_refusal": 2250,
+    "stale_answer": 1545,
+    "future_invalid_answer": 1344,
+    "invalid_graph_path_answer": 571,
+    "wrong_operator_answer": 1080,
+    "partial_answer": 148
+  },
+  "context_pack_counts": {
+    "stale_only": 1833,
+    "valid_plus_stale": 2381,
+    "insufficient": 2250,
+    "valid_only": 2250,
+    "valid_plus_future": 2329,
+    "future_only": 1441
+  },
+  "split_counts": {
+    "dev": 102,
+    "generator_audit_reserve": 23,
+    "human_pool": 36,
+    "test_auto": 120,
+    "train": 355
+  },
+  "source_fidelity_counts": {
+    "source_extracted": 600
+  },
+  "warnings": []
+}
