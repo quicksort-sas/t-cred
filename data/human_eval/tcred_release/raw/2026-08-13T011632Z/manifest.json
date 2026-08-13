@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "release_scope": "tcred_synth",
+  "annotation_protocol_version": "4.2",
+  "source_snapshot": {
+    "id": "2026-08-13T011632Z",
+    "status": "interim_partial_collection",
+    "original_manifest_sha256": "432543aac40d3c06b9ee7ac958401a8d8016614fd55d6b9bc4692549bdf59459"
+  },
+  "counts": {
+    "unit_count": 138,
+    "label_row_count": 210,
+    "pseudonymous_annotator_count": 21
+  },
+  "privacy_transform": {
+    "kept": [
+      "release-only remapped annotator_id",
+      "unit_id",
+      "categorical labels",
+      "structured reasons",
+      "issue_code",
+      "workflow_stage"
+    ],
+    "removed": [
+      "saved_at",
+      "free-text comment",
+      "free-text issue_detail"
+    ]
+  },
+  "files": [
+    {
+      "path": "units.jsonl",
+      "bytes": 628761,
+      "sha256": "6934dc5459b06000772cc7cac41b41bbf334fb7573313de48f26570a7b9a29d2"
+    },
+    {
+      "path": "raw_labels.jsonl",
+      "bytes": 94844,
+      "sha256": "f7640a4533818419b379a3de7c0e4757760fbc689ca3960950f2936a6b482eeb"
+    }
+  ],
+  "limitations": [
+    "This release contains only annotations for the team-created tcred_synth family.",
+    "The source snapshot was an incomplete collection, not a completed 36-annotator study.",
+    "Release-only rater pseudonyms are retained for agreement analysis; the mapping to collection pseudonyms is not published."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "release_scope": "tcred_synth",
+  "annotation_protocol_version": "4.2",
+  "gold_policy_version": "1.0",
+  "source_snapshot": {
+    "id": "2026-08-13T011632Z",
+    "status": "interim_partial_collection",
+    "original_gold_manifest_sha256": "6523a5334246884f985327060d229c6171131913cf31e975b8741447b2200709"
+  },
+  "adjudication": {
+    "mode": "single_expert_two_pass",
+    "adjudicator_identity": "Codex AI system"
+  },
+  "counts": {
+    "gold_unit_count": 65,
+    "gold_field_count": 283,
+    "resolution_method": {
+      "annotator_agreement": 172,
+      "adjudication": 111
+    }
+  },
+  "files": [
+    {
+      "path": "gold_units.jsonl",
+      "bytes": 490633,
+      "sha256": "3547e365b79b7f34b0da384ccedc6791de0ac4c2dd9f4a804547e71e882a7c38"
+    },
+    {
+      "path": "gold_labels.jsonl",
+      "bytes": 194422,
+      "sha256": "ca75437d82c44a153c984da3db3a8308ddac31c54b5facda52ee463514ec1bdd"
+    }
+  ],
+  "limitations": [
+    "This release contains only evaluated units from the team-created tcred_synth family.",
+    "The source annotation snapshot was an incomplete collection.",
+    "Some fields were resolved by the disclosed AI adjudicator rather than human agreement.",
+    "The gold set is final only for the frozen source snapshot and filtering policy described here."
+  ]
+}

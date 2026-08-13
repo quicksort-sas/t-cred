@@ -45,9 +45,9 @@ data/generated/tcred_release/*
 data/human_eval/*
 !data/human_eval/tcred_release/
 data/human_eval/tcred_release/*
-!data/human_eval/tcred_release/human_eval_key.jsonl
 !data/human_eval/tcred_release/raw/
 !data/human_eval/tcred_release/raw/**
 !data/human_eval/tcred_release/gold/
 !data/human_eval/tcred_release/gold/**
+data/human_eval/tcred_release/gold/*/excluded_units.jsonl
 data/human_eval/tcred_release/gold/*/system_performance/
