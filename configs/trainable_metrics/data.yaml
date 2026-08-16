@@ -1,0 +1,268 @@
+schema_version: tcred-sl-data-build-v1
+seed: 20260816
+split_salt: tcred-sl-splits-v1
+development_fraction_without_upstream_dev: 0.08
+calibration_fraction_without_upstream_dev: 0.02
+calibration_fraction_of_upstream_dev: 0.25
+near_duplicate_jaccard_threshold: 0.90
+near_duplicate_candidate_threshold: 0.60
+near_duplicate_num_perm: 128
+max_rows_per_group: 128
+sources:
+  - name: multinli
+    adapter: nli
+    curriculum_stage: stage_a
+    target_train_rows: 100000
+    dataset_id: nyu-mll/multi_nli
+    revision: da70db2af9d09693783c3320c4249840212ee221
+    loader: huggingface
+    split_map: {train: train}
+    license_id: mixed-multinli-source-licenses
+    license_url: https://huggingface.co/datasets/nyu-mll/multi_nli/blob/da70db2af9d09693783c3320c4249840212ee221/README.md
+    source_url: https://huggingface.co/datasets/nyu-mll/multi_nli/tree/da70db2af9d09693783c3320c4249840212ee221
+    group_policy: normalized premise text (all hypotheses sharing model-visible evidence)
+    redistribution: adapters_and_hashes_only
+    balance_labels: true
+    notes: The source card lists multiple underlying licenses; transformed text is not redistributed.
+
+  - name: wanli
+    adapter: nli
+    curriculum_stage: stage_a
+    target_train_rows: 60000
+    dataset_id: alisawuffles/WANLI
+    revision: 61c95318fd71c55b6ba355d76253254615f387ec
+    loader: huggingface
+    split_map: {train: train}
+    license_id: CC-BY-4.0
+    license_url: https://creativecommons.org/licenses/by/4.0/
+    source_url: https://huggingface.co/datasets/alisawuffles/WANLI/tree/61c95318fd71c55b6ba355d76253254615f387ec
+    group_policy: normalized premise text
+    redistribution: allowed_with_attribution
+    balance_labels: true
+
+  - name: anli
+    adapter: nli
+    curriculum_stage: stage_a
+    target_train_rows: 60000
+    dataset_id: facebook/anli
+    revision: 8e4813d81f46d313dac7892e1c28076917cfcdf9
+    loader: huggingface
+    split_map:
+      train: [train_r1, train_r2, train_r3]
+    license_id: CC-BY-NC-4.0
+    license_url: https://creativecommons.org/licenses/by-nc/4.0/
+    source_url: https://huggingface.co/datasets/facebook/anli/tree/8e4813d81f46d313dac7892e1c28076917cfcdf9
+    group_policy: normalized premise text across rounds
+    redistribution: noncommercial_research_only
+    balance_labels: true
+    notes: Research-only training; rounds are sampled evenly by the source builder.
+
+  - name: paws_wiki
+    adapter: paws
+    curriculum_stage: stage_a
+    target_train_rows: 40000
+    dataset_id: google-research-datasets/paws
+    dataset_config: labeled_final
+    revision: 161ece9501cf0a11f3e48bd356eaa82de46d6a09
+    loader: huggingface
+    split_map: {train: train}
+    license_id: PAWS-custom-free-use
+    license_url: https://github.com/google-research-datasets/paws/blob/master/LICENSE
+    source_url: https://huggingface.co/datasets/google-research-datasets/paws/tree/161ece9501cf0a11f3e48bd356eaa82de46d6a09
+    group_policy: unordered normalized sentence pair
+    redistribution: allowed_with_attribution
+    balance_labels: true
+
+  - name: fever
+    adapter: fever
+    curriculum_stage: stage_a
+    target_train_rows: 80000
+    revision: fever-v1.0-train-eba7e8f8-wiki-4b06d95d
+    loader: jsonl
+    local_files: {train: fever/fever_train_enriched.jsonl}
+    split_map: {train: train}
+    license_id: CC-BY-SA-3.0-and-page-specific-Wikipedia-terms
+    license_url: https://fever.ai/dataset/fever.html
+    source_url: https://fever.ai/download/fever/train.jsonl
+    group_policy: complete normalized evidence annotation text set
+    redistribution: allowed_share_alike
+    balance_labels: true
+    notes: Only SUPPORTS/REFUTES rows with reconstructed released evidence are eligible; NEI is excluded.
+
+  - name: vitaminc_broad
+    adapter: vitaminc_support
+    curriculum_stage: stage_a
+    target_train_rows: 80000
+    dataset_id: tals/vitaminc
+    revision: be6febb761b0b2807687e61e0b5282e459df2fa0
+    loader: huggingface
+    split_map: {train: train}
+    license_id: CC-BY-SA-3.0
+    license_url: https://creativecommons.org/licenses/by-sa/3.0/
+    source_url: https://huggingface.co/datasets/tals/vitaminc/tree/be6febb761b0b2807687e61e0b5282e459df2fa0
+    group_policy: complete case_id revision family
+    redistribution: allowed_share_alike
+    balance_labels: true
+
+  - name: temporal_nli_public
+    adapter: temporal_nli
+    curriculum_stage: stage_a
+    target_train_rows: 80000
+    revision: f376ce4f0708c7a518d9d8568afc21c15a516e02-public-upstreams-only
+    loader: csv
+    local_files: {train: temporal_nli/processed/train.tsv}
+    split_map: {train: train}
+    license_id: mixed-public-upstream-corpus-licenses
+    license_url: https://github.com/sidsvash26/temporal_nli/blob/f376ce4f0708c7a518d9d8568afc21c15a516e02/data/README.md
+    source_url: https://github.com/sidsvash26/temporal_nli/tree/f376ce4f0708c7a518d9d8568afc21c15a516e02
+    group_policy: complete upstream context/document text across event pairs and templates
+    redistribution: adapters_and_hashes_only
+    balance_labels: true
+    notes: RED/LDC2016T23 is deliberately omitted; only UDS-T, TempEval-3, and TimeBank-Dense are eligible.
+
+  - name: mocha
+    adapter: mocha
+    curriculum_stage: stage_b
+    target_train_rows: 27900
+    revision: mocha-data-18c74cd7f8c2ffccf64bb97b371bee10cd10a98a
+    loader: jsonl
+    local_files: {train: mocha/train.jsonl}
+    split_map: {train: train}
+    license_id: CC-BY-SA-4.0
+    license_url: https://creativecommons.org/licenses/by-sa/4.0/
+    source_url: https://github.com/anthonywchen/MOCHA/tree/18c74cd7f8c2ffccf64bb97b371bee10cd10a98a
+    group_policy: complete constituent context across questions and generated candidates
+    redistribution: allowed_share_alike
+    notes: The cleaned 31,069-row pool is split by complete groups; 27,900 train rows leave deterministic 8% development and 2% calibration reserves.
+
+  - name: answer_equivalence
+    adapter: answer_equivalence
+    curriculum_stage: stage_b
+    target_train_rows: 8100
+    revision: 5032298f3fe69bebab4a013de5606231a948cebc
+    loader: jsonl
+    local_files: {train: answer_equivalence/v1/train.jsonl}
+    split_map: {train: train}
+    license_id: Apache-2.0
+    license_url: https://www.apache.org/licenses/LICENSE-2.0
+    source_url: https://github.com/google-research-datasets/answer-equivalence-dataset/tree/5032298f3fe69bebab4a013de5606231a948cebc
+    group_policy: complete source context (or question when context is absent)
+    redistribution: allowed_with_attribution
+    balance_labels: true
+    notes: Four released train rows are structurally unusable; 8,100 train rows preserve group-disjoint development and calibration data while released dev/test remain untouched.
+
+  - name: vitaminc_task
+    adapter: vitaminc_temporal
+    curriculum_stage: stage_b
+    target_train_rows: 20000
+    dataset_id: tals/vitaminc
+    revision: be6febb761b0b2807687e61e0b5282e459df2fa0
+    loader: huggingface
+    split_map: {train: train}
+    license_id: CC-BY-SA-3.0
+    license_url: https://creativecommons.org/licenses/by-sa/3.0/
+    source_url: https://huggingface.co/datasets/tals/vitaminc/tree/be6febb761b0b2807687e61e0b5282e459df2fa0
+    group_policy: complete case_id revision family; disjoint from vitaminc_broad
+    redistribution: allowed_share_alike
+    balance_labels: true
+
+  - name: attribution_bench
+    adapter: attribution_bench
+    curriculum_stage: stage_b
+    target_train_rows: 11900
+    revision: 62569e644f4186606f54f742178a4517431b42e1
+    loader: jsonl
+    local_files: {train: attribution_bench/train_all_subset_balanced.jsonl}
+    split_map: {train: train}
+    license_id: Apache-2.0
+    license_url: https://www.apache.org/licenses/LICENSE-2.0
+    source_url: https://huggingface.co/datasets/osunlp/AttributionBench/tree/62569e644f4186606f54f742178a4517431b42e1
+    group_policy: normalized question plus complete cited evidence set across response systems
+    redistribution: allowed_with_attribution
+    balance_labels: true
+    notes: Binary labels train appropriate/inappropriate only; incomplete is supplied by formal project pairs. The checksum-pinned raw JSONL avoids a malformed generic streaming schema. The target reserves group-disjoint development and calibration rows from the finite in-domain train pool.
+
+  - name: ragtruth
+    adapter: ragtruth
+    curriculum_stage: stage_b
+    target_train_rows: 14000
+    revision: c103204b9ce28d6bbad859304bf30de72b8ed8fe
+    loader: jsonl
+    local_files:
+      source_info: ragtruth/dataset/source_info.jsonl
+      responses: ragtruth/dataset/response.jsonl
+    split_map: {train: train}
+    license_id: MIT
+    license_url: https://opensource.org/license/mit
+    source_url: https://github.com/ParticleMedia/RAGTruth/tree/c103204b9ce28d6bbad859304bf30de72b8ed8fe
+    group_policy: source_id and all six generated responses
+    redistribution: allowed_with_attribution
+    balance_labels: true
+    notes: Hallucination spans provide supported/unsupported labels only; contradiction is never inferred.
+
+  - name: torque
+    adapter: torque
+    curriculum_stage: stage_b
+    target_train_rows: 16600
+    revision: ab27019cc6a317fde3c879900499f02acce8b16d
+    loader: json
+    local_files: {train: torque/data/train.json}
+    split_map: {train: train}
+    license_id: Apache-2.0
+    license_url: https://www.apache.org/licenses/LICENSE-2.0
+    source_url: https://github.com/qiangning/TORQUE-dataset/tree/ab27019cc6a317fde3c879900499f02acce8b16d
+    group_policy: passageID and all temporal questions over the passage
+    redistribution: allowed_with_attribution
+    notes: Of 24,523 official train questions, 18,646 have complete agreed-answer supervision; 16,600 train rows leave whole-passage development and calibration reserves.
+
+  - name: squad2
+    adapter: squad2
+    curriculum_stage: stage_b
+    target_train_rows: 40000
+    dataset_id: rajpurkar/squad_v2
+    revision: 3ffb306f725f7d2ce8394bc1873b24868140c412
+    loader: huggingface
+    split_map: {train: train}
+    license_id: CC-BY-SA-4.0
+    license_url: https://creativecommons.org/licenses/by-sa/4.0/
+    source_url: https://huggingface.co/datasets/rajpurkar/squad_v2/tree/3ffb306f725f7d2ce8394bc1873b24868140c412
+    group_policy: title plus normalized source paragraph
+    redistribution: allowed_share_alike
+    balance_labels: true
+
+  - name: ms_marco_v1_1
+    adapter: ms_marco
+    curriculum_stage: stage_b
+    target_train_rows: 60000
+    dataset_id: microsoft/ms_marco
+    dataset_config: v1.1
+    revision: a47ee7aae8d7d466ba15f9f0bfac3b3681087b3a
+    loader: huggingface
+    split_map: {train: train}
+    license_id: MS-MARCO-noncommercial-research-terms
+    license_url: https://microsoft.github.io/msmarco/
+    source_url: https://huggingface.co/datasets/microsoft/ms_marco/tree/a47ee7aae8d7d466ba15f9f0bfac3b3681087b3a
+    group_policy: query_id with one selected and one lexical-hard released negative
+    redistribution: noncommercial_research_only
+    terms_required: true
+    terms_acceptance_env: TCRED_ACCEPT_MSMARCO_TERMS
+    streaming_shuffle_seed: 20260816
+    streaming_shuffle_buffer_rows: 50000
+    streaming_take_rows_per_split: 80000
+    notes: 60,000 rows means 30,000 query-level positive/negative pairs, correcting the earlier ambiguous use of triplets. A fixed-seed 50,000-row buffer samples 80,000 raw queries without scanning the complete million-query train split; the builder fails if eligibility cannot supply every partition target.
+
+  - name: project_formal_fresh
+    adapter: project_formal
+    curriculum_stage: stage_b
+    target_train_rows: 100000
+    revision: tcred-project-formal-v1
+    loader: project
+    local_files: {train: project_formal/records.jsonl}
+    split_map: {train: train}
+    license_id: CC0-1.0-Wikidata-plus-project-code
+    license_url: https://creativecommons.org/publicdomain/zero/1.0/
+    source_url: https://www.wikidata.org/wiki/Wikidata:Licensing
+    group_policy: fresh source scenario, entity series, and complete update chain
+    redistribution: allowed_with_attribution
+    balance_labels: false
+    notes: Fresh hash buckets only; every released, human, reserve, and formal-validation source is excluded.
