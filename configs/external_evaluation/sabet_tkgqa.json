@@ -1,0 +1,88 @@
+{
+  "protocol_version": "1.0",
+  "frozen_on": "2026-08-16",
+  "target": {
+    "title": "SABET-QA: Temporal Knowledge Graph Question Answering",
+    "openreview_id": "iK7I1Di4zn",
+    "review_status_at_freeze": "preprint / anonymous submission; peer-review outcome not established",
+    "repository_url": "https://github.com/quicksort-sas/sabet-tkgqa",
+    "repository_commit": "ee5b2d7ea2120372ecbc16ee6156bfd07df52397"
+  },
+  "artifacts": {
+    "paper": {
+      "path": "data/external/sabet-tkgqa-paper.pdf",
+      "sha256": "e57526e860df5e3d6cac344d090a9a6941fcb67b127f391872e6bbd5abce1799"
+    },
+    "source_archive": {
+      "path": "data/external/sabet-tkgqa-ee5b2d7.tar.gz",
+      "sha256": "7a7be113473bd313d2526a838d2b9ceab34ac6ea484a02b4732b99ee42bd18a1"
+    },
+    "osf_data_archive": {
+      "name": "Data 2.zip",
+      "size_bytes": 2658565270,
+      "sha256": "fe89fe94f9d73a1b24219b42a1d1d2481fff72b252febbd97ae077d60afef623"
+    }
+  },
+  "datasets": {
+    "CronQuestions": "wikidata_big",
+    "Complex-CronQuestions": "wikidata_big_complex",
+    "MultiTQ": "MultiTQ",
+    "TimeQuestions": "timequestions"
+  },
+  "paper_dataset_counts": {
+    "CronQuestions": {"train": 350000, "valid": 30000, "test_table_6": 30522, "test_table_8": 30000},
+    "Complex-CronQuestions": {"train": 35795, "valid": 5020, "test_table_6": 5528, "test_table_8": 5006},
+    "MultiTQ": {"train": 386787, "valid": 57979, "test_table_6": 54584, "test_table_8": 54584},
+    "TimeQuestions": {"train": 6970, "valid": 3236, "test_table_6": 3237, "test_table_8": 3237}
+  },
+  "paper_overall_claims": {
+    "CronQuestions": {
+      "TempoQR": {"hits_at_1": 0.796, "hits_at_10": 0.959},
+      "TempoQR-Hard": {"hits_at_1": 0.914, "hits_at_10": 0.979},
+      "SubGTR-Hard": {"hits_at_1": 0.913, "hits_at_10": 0.980},
+      "SABET-QA": {"hits_at_1": 0.843, "hits_at_10": 0.969},
+      "SABET-QA-Hard": {"hits_at_1": 0.954, "hits_at_10": 0.989}
+    },
+    "Complex-CronQuestions": {
+      "TempoQR": {"hits_at_1": 0.438, "hits_at_10": 0.853},
+      "TempoQR-Hard": {"hits_at_1": 0.632, "hits_at_10": 0.933},
+      "SubGTR-Hard": {"hits_at_1": 0.623, "hits_at_10": 0.928},
+      "SABET-QA": {"hits_at_1": 0.524, "hits_at_10": 0.896},
+      "SABET-QA-Hard": {"hits_at_1": 0.807, "hits_at_10": 0.962}
+    },
+    "MultiTQ": {
+      "TempoQR": {"hits_at_1": 0.327, "hits_at_10": 0.571},
+      "TempoQR-Hard": {"hits_at_1": 0.335, "hits_at_10": 0.579},
+      "SubGTR-Hard": {"hits_at_1": 0.337, "hits_at_10": 0.576},
+      "SABET-QA": {"hits_at_1": 0.373, "hits_at_10": 0.700},
+      "SABET-QA-Hard": {"hits_at_1": 0.403, "hits_at_10": 0.715}
+    },
+    "TimeQuestions": {
+      "TempoQR": {"hits_at_1": 0.409, "hits_at_10": 0.530},
+      "TempoQR-Hard": {"hits_at_1": 0.410, "hits_at_10": 0.528},
+      "SubGTR-Hard": {"hits_at_1": 0.419, "hits_at_10": 0.532},
+      "SABET-QA": {"hits_at_1": 0.502, "hits_at_10": 0.619},
+      "SABET-QA-Hard": {"hits_at_1": 0.504, "hits_at_10": 0.615}
+    }
+  },
+  "run_matrix": {
+    "primary_seed": 1729,
+    "replication_seeds": [1729, 2718, 3141],
+    "primary_datasets": [
+      "wikidata_big",
+      "wikidata_big_complex",
+      "MultiTQ",
+      "timequestions"
+    ],
+    "primary_models": ["sabet_hard", "tempo_qr_hard"],
+    "multi_seed_datasets": ["wikidata_big_complex", "timequestions"],
+    "exploratory_reconstructed_models": ["sabet_standard", "tempo_qr_standard"]
+  },
+  "statistics": {
+    "bootstrap_replicates": 5000,
+    "confidence_level": 0.95,
+    "familywise_correction": "Holm",
+    "primary_unit": "question",
+    "randomization_replicates": 10000
+  }
+}
