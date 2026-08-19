@@ -2,6 +2,7 @@
 name = "tcred"
 version = "0.1.0"
 description = "Temporal GraphRAG diagnostic dataset generation and evaluation tooling"
+readme = "README.md"
 authors = [
     { name = "Murad", email = "muradmustafayev03@gmail.com" }
 ]
@@ -19,6 +20,10 @@ dependencies = [
     "tenacity>=9.1.4",
     "typer>=0.26.7",
 ]
+
+[project.urls]
+Repository = "https://github.com/quicksort-sas/t-cred"
+"Annotation Tool" = "https://github.com/Muradmustafayev-03/tcred_annotation_tool"
 
 [project.optional-dependencies]
 metrics-neural = [
