@@ -221,7 +221,7 @@ def _majority_rows(labels: list[ImportedHumanLabel]) -> list[dict[str, object]]:
                 "annotator_ids": sorted(label.annotator_id for label in unit_labels),
                 "label_count": len(unit_labels),
                 "majority_labels": majority,
-                "requires_adjudication": any(
+                "requires_resolution": any(
                     bool(majority.get(f"{field}_disagreement")) for field in SCORABLE_FIELDS
                 ),
             }

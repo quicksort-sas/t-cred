@@ -654,19 +654,19 @@ def import_human_labels_command(
 @app.command("evaluate-systems-on-human-gold")
 def evaluate_systems_on_human_gold_command(
     gold_dir: Annotated[Path, typer.Option("--gold-dir")] = Path(
-        "data/human_eval/tcred_release/gold/current"
+        "data/human_eval/tcred_release/gold/2026-08-13T011632Z"
     ),
     output_dir: Annotated[Path | None, typer.Option("--output-dir", "-o")] = None,
     overwrite: Annotated[bool, typer.Option("--overwrite/--no-overwrite")] = False,
 ) -> None:
-    """Evaluate the four QA systems against human/adjudicated gold judgments."""
+    """Evaluate the four QA systems against the published final gold judgments."""
     resolved_output = output_dir or gold_dir / "system_performance"
     written = analyze_system_performance(
         gold_dir=gold_dir,
         output_dir=resolved_output,
         overwrite=overwrite,
     )
-    table = Table(title="QA-system performance on human gold")
+    table = Table(title="QA-system performance on final gold")
     table.add_column("Artifact")
     table.add_column("Path")
     for name, path in written.items():

@@ -100,7 +100,7 @@ def analyze_system_performance(
     output_dir: Path,
     overwrite: bool = False,
 ) -> dict[str, Path]:
-    """Score the four QA systems against the human/adjudicated gold layer."""
+    """Score the four QA systems against the published final gold layer."""
     output_paths = {name: output_dir / name for name in OUTPUT_FILENAMES}
     _guard_outputs(output_paths.values(), overwrite=overwrite)
 
@@ -159,7 +159,7 @@ def analyze_system_performance(
         },
         complete_four_system_question_count=coverage.get(4, 0),
         scoring_policy={
-            "primary": "strict pass = human gold label yes",
+            "primary": "strict pass = final gold label yes",
             "partial_credit": "yes=1.0, partial=0.5, no=0.0",
             "unjudgeable": (
                 "reported separately and excluded from determinate partial-credit scores"
@@ -173,7 +173,8 @@ def analyze_system_performance(
         descriptive_answer_ranking=ranking,
         pairwise_answer_comparisons=pairwise,
         limitations=(
-            "Retained system samples are unequal and depend on interim annotation completion.",
+            "Retained system samples are unequal and depend on coverage in the frozen source "
+            "snapshot.",
             "No retained question has gold outputs for all four systems.",
             "Pairwise shared-question samples contain only 2 to 7 questions.",
             "Confidence intervals describe within-system binomial uncertainty but do not correct "

@@ -635,7 +635,7 @@ def _manifest_limitations(
     minicheck_scope: Literal["human_gold", "all"],
 ) -> list[str]:
     limitations = [
-        "The human gold source is final only for its frozen interim annotation snapshot.",
+        "The gold source is final only for its frozen public source snapshot.",
         "Adjudicated labels include decisions by one AI adjudicator, as declared by the gold "
         "manifest.",
         "Full-run automatic metric means have narrower sampling intervals but no additional "
